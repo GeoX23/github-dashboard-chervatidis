@@ -1,0 +1,14 @@
+@tailwind utilities;
+@import "tailwindcss/preflight";
+@plugin "daisyui" {
+  themes: light --default, dark --prefersdark;
+}
+
+#root {
+  max-width: 1920px;
+  margin: 0 auto;
+}
+
+.card-body {
+  padding: 16px;
+}
