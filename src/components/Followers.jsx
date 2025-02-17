@@ -7,17 +7,17 @@ const Followers = ({ username, onClose, followersNumber }) => {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
   const [currentPage, setCurrentPage] = useState(1);
-  const followersPerPage = 20;
+  const followersPerPage = 30;
 
   useEffect(() => {
-    let totalPages = Math.ceil(followersNumber / 100);
+    let totalPages = Math.ceil(followersNumber / 30);
     const fetchFollowers = async () => {
       try {
         for (let i = 1; i <= totalPages; i++) {
           const response = await axios.get(
-            `https://api.github.com/users/${username}/followers?page=${i}&per_page=30`
+            `https://api.github.com/users/${username}/followers?per_page=100`
           );
-          setFollowers((prev) => [...prev, ...response.data]);
+          setFollowers(() => [...response.data]);
         }
       } catch (err) {
         setError(
